@@ -1,9 +1,13 @@
-name: CI/CD Pipeline
+name: IMPREMENTACION DE CI/CD CON GITHUB ACTIONS - DOCKER
 
 on:
   push:
     branches:
       - main
+
+permissions:
+  contents: read
+  packages: write
 
 jobs:
   test_and_build:
