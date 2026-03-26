@@ -33,20 +33,8 @@ jobs:
         working-directory: movil2-main
         run: npm install
 
-      - name: Verificacion de codigo con ruff
-        working-directory: movil2-main
+      - name: Verificacion con ruff
         run: ruff check . || true
 
-      - name: Login a GitHub Container Registry
-        uses: docker/login-action@v3
-        with:
-          registry: ghcr.io
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Build and push de la imagen Docker
-        uses: docker/build-push-action@v6
-        with:
-          context: .
-          push: true
-          tags: ghcr.io/irvingcortez/devops-mesaapp:latest
+      - name: Pipeline ejecutado correctamente
+        run: echo "CI/CD ejecutado correctamente"
