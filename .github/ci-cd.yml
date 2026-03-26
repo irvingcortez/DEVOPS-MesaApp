@@ -2,24 +2,25 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ "main" ]
+    branches:
+      - main
 
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout del repositorio
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Install dependencies
+      - name: Instalar dependencias
         working-directory: movil2-main
         run: npm install
 
-      - name: Pipeline OK
-        run: echo "Todo funcionando correctamente"
+      - name: Pipeline ejecutado correctamente
+        run: echo "CI/CD ejecutado correctamente"
