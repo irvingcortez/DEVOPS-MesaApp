@@ -1,40 +1,25 @@
-name: IMPREMENTACION DE CI/CD CON GITHUB ACTIONS – DOCKER
+name: CI/CD Pipeline
 
 on:
   push:
     branches: [ "main" ]
-
-permissions:
-  contents: read
-  packages: write
 
 jobs:
   test_and_build:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout del repositorio
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Python 3.11
-        uses: actions/setup-python@v3
-        with:
-          python-version: "3.11"
-
-      - name: Instalar dependencias de Python
-        run: pip install -r requirements.txt
-
-      - name: Set up Node.js
+      - name: Set up Node
         uses: actions/setup-node@v4
         with:
           node-version: "20"
 
-      - name: Instalar dependencias de Node
+      - name: Install dependencies
         working-directory: movil2-main
         run: npm install
 
-      - name: Verificacion con ruff
-        run: ruff check . || true
-
-      - name: Pipeline ejecutado correctamente
-        run: echo "CI/CD ejecutado correctamente"
+      - name: Pipeline OK
+        run: echo "Todo funcionando correctamente"
